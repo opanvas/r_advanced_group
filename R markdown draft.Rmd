@@ -1,0 +1,93 @@
+---
+title: "R Group Assignment COVID"
+author: "Jenefa, Oxana, Yiqi, Raph, Hongdi"
+date: "7/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+</style>
+
+<h3 class = 'menutop' id="Contents">
+  [Contents](#Contents)
+  [Introduction](#Introduction)
+
+<div class="dropdown">
+<a class="dropbtn">Data analysis</a>
+<div class="dropdown-content">
+  [dates](#dates)
+  [station_location](#station_location)
+  [heatmaps](#heatmaps)
+</div>
+</div>
+  [Data Preparation](#data_preparation)
+  [Data Processing](#data_processing)
+  [Building the Model](#building_the_model)
+</h3>
+<body style = "font-family: Arial, Helvetica, sans-serif;">
+<a center class="anchor" id="Introduction" style="background-color:Gainsboro; width:40%;"></a>
+<center style="background-color:Gainsboro; width:40%;">Introduction</center>
+
+
+> 'We are glad to present to you our R advanced Group Assignment!'
+
+```{r, echo=F}
+# Before starting, we have to install and activate some R libraries in order to use the necessary statistics and time series functions:
+# basic statistics 
+install.packages("fBasics")
+# time series functions
+install.packages("forecast")
+# normality tests
+install.packages("normtest")
+
+# working with the excel tables
+install.packages("xlsx")
+install.packages("readxl")
+
+library(fBasics)
+library(forecast)
+library(normtest)
+library(tidyverse)
+library(readxl)
+#library(xlsx)
+
+
+#clean environment
+#rm(list=ls())
+#File paths:
+#Kiko file path
+#data<-read.csv("C:/Users/usuario/Desktop/LPC/MASTERS/MBD_abril_2019/Sessions2&3sim.csv",header=TRUE,sep=";",dec=",")
+
+#Oxana file paths
+file_path_original_data <- file.path("~","Downloads","Timeseries","Homework_1_DATA .csv")
+data<-read.csv(file_path_original_data, header=TRUE,sep=";",dec=",")
+summary_table_ts_file <- file.path("~","Downloads","Timeseries","resultsfts.xlsx")
+summary_table_ts <- read_excel(summary_table_ts_file, sheet = 1)
+tests_table <- read_excel(summary_table_ts_file, sheet = 2)
+#summary_table_ts <- read.xlsx(summary_table_ts_file, 1)
+#tests_table <-read.xlsx(summary_table_ts_file, 2)
+
+# Data itself
+series1=data[,1] [1:300]
+series2=data[,2] [1:300]
+series3=data[,3] [1:300]
+series4=data[,4] [1:300]
+series5=data[,5] [1:2000]
+series6=data[,6] 
+series7=data[,7]
+```
+
+<div id= 'summary'>
+# Summary of findings 
+
+> 'We decided to also list the tests we used together with the original and transformed data'
+
+```{r date_variant, echo=FALSE}
+print(summary_table_ts)
+```
